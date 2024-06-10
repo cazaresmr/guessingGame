@@ -8,26 +8,79 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <style>
+      .dark-mode {
+        --bg-color: #1a202c;
+        --text-color: #f7fafc;
+        --input-bg-color: #2d3748;
+        --input-border-color: #4a5568;
+        --card-bg-color: #2d3748;
+        --card-text-color: #f7fafc;
+      }
+      .light-mode {
+        --bg-color: #f7fafc;
+        --text-color: #1a202c;
+        --input-bg-color: #edf2f7;
+        --input-border-color: #cbd5e0;
+        --card-bg-color: #ffffff;
+        --card-text-color: #1a202c;
+      }
+      .dark-mode {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+      .light-mode {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+      .dark-mode .card {
+        background-color: var(--card-bg-color);
+        color: var(--card-text-color);
+      }
+      .light-mode .card {
+        background-color: var(--card-bg-color);
+        color: var(--card-text-color);
+      }
+      .dark-mode input {
+        background-color: var(--input-bg-color);
+        border-color: var(--input-border-color);
+        color: var(--text-color);
+      }
+      .light-mode input {
+        background-color: var(--input-bg-color);
+        border-color: var(--input-border-color);
+        color: var(--text-color);
+      }
+    </style>
   </head>
-  <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded shadow-md text-center">
-      <h1 class="text-2xl font-bold mb-4">Guessing Game</h1>
-      <p class="mb-4" id="message">Guess the number between 1 and 100</p>
+  <body class="dark-mode h-screen">
+    <div class="card p-8 rounded shadow-md text-center">
+      <h1 class="title text-2xl font-bold mb-4">Guessing Game</h1>
+      <button
+        id="toggleMode"
+        class="mb-4 py-2 px-4 rounded bg-blue-500 text-white"
+      >
+        Switch to Light Mode
+      </button>
+      <p class="subtitle mb-4" id="message">
+        Guess the number between 1 and 100
+      </p>
       <input
-        type="number"
+        type="text"
         id="guessInput"
         class="border p-2 mb-4 w-full"
-        placeholder="Enter your guess"
+        placeholder="Enter your guess and press Enter"
       />
-      <button
-        onclick="makeGuess()"
-        class="bg-blue-500 text-white py-2 px-4 rounded"
-      >
-        Guess
-      </button>
       <p class="mt-4 text-red-500" id="feedback"></p>
+      <button
+        id="playButton"
+        class="hidden mb-4 py-2 px-4 rounded bg-green-500 text-white"
+        onclick="resetGame()"
+      >
+        Play
+      </button>
     </div>
 
-    <script src="game.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

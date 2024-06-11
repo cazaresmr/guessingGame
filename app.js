@@ -45,14 +45,14 @@ function makeGuess() {
 
   if (guess === magicNumber) {
     feedback.textContent = `Congratulations, you guessed the magic number ${magicNumber} in ${guessCount} guesses!`;
-    setTimeout(() => askToPlayAgain(), 100); // Delay to ensure feedback is visible before prompt
+    setTimeout(() => askToPlayAgain(), 100);
   } else if (guess < magicNumber) {
     feedback.textContent = "Too low! Try again.";
   } else {
     feedback.textContent = "Too high! Try again.";
   }
 
-  guessInput.value = ""; // Clear the input field after each guess
+  guessInput.value = "";
 }
 
 function askToPlayAgain() {
@@ -75,7 +75,6 @@ function resetGame() {
   document.getElementById("playButton").classList.add("hidden");
 }
 
-// Ensure prompt on page unload if game is still playing
 window.addEventListener("beforeunload", (event) => {
   if (playing) {
     event.preventDefault();
@@ -83,5 +82,4 @@ window.addEventListener("beforeunload", (event) => {
   }
 });
 
-// Initialize the mode to dark mode by default
 toggleMode();
